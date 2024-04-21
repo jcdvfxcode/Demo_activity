@@ -1,0 +1,24 @@
+body {
+    background-color: black;
+}
+
+h2 {
+    background-color: aqua;
+
+}
+
+.def {
+    color: #EADBC8;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+}
+
+a {
+    background-color: red !important;
+    font-weight: bold;
+}
+
+.magni {
+    color: aliceblue;
+    font-size: 20px;
+}
