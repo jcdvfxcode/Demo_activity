@@ -1,0 +1,30 @@
+span {
+    background-color: blue;
+    color: white;
+    padding: 50px;
+    border: 10px solid;
+    border-color: red;
+}
+
+.btn {
+    padding: 20px;
+    border-radius: 20px;
+    margin: 40px;
+}
+
+.hero_text {
+    text-align: center;
+    background-color: lightgray;
+    padding: 50px;
+    height: 100px;
+}
+
+header {
+    margin-top: 100px;
+    padding: 50px;
+    background-color: red;
+}
+
+body {
+    background-color: bisque;
+}
