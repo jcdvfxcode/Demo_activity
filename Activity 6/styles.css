@@ -1,0 +1,56 @@
+@media screen and (max-width: 600px) {
+
+body {
+    background: rgb(241, 236, 236);
+}
+
+h1 {
+    display: block;
+    color: black; 
+}
+
+.flex-container {
+display: flex !important;
+flex-direction: column !important;
+align-items: center !important;
+background-color: rgb(48, 50, 52) !important;
+}
+
+}
+
+/* above 600px */
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end ;
+    align-items: center;
+    background-color: rgb(48, 50, 52);
+}
+
+
+.flex-item {
+    background-color: rgb(184, 170, 170);
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.hover:hover{
+    color: beige;
+}
+
+.link {
+    text-decoration: none;
+}
+
+h3{
+position: absolute;
+bottom: 20px;
+right: 30px;
+font-size: 120%;
+}
+
+.icon:hover{
+color: lightslategray;
+}
