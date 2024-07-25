@@ -1,0 +1,14 @@
+.p-text {
+    color: lightslategray;
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+}
+
+/* image size */
+.avatar {
+    height:auto ;  
+    width: 100%;
+
+}
