@@ -1369,7 +1369,7 @@ while(x <= 100){                    // condition
 let x = 1;
 
 while(x <= 100){
-//     if(x % 2 == 0)         // EVEN NUMBER because (1 divided by 2 is equals to Zero) thats why the result will be EVEN number
+//     if(x % 2 == 0){}        // EVEN NUMBER because (1 divided by 2 is equals to Zero) thats why the result will be EVEN number
       if(x % 2 != 0){         // ODD NUMBER becaue != not equal to zero, it would be Zero but the OPERATOR is !not equal to(!=) thats why the answer is FALSE
       console.log(x);
       }
@@ -2948,6 +2948,202 @@ Block Scope Test: Create a block using {} and define a variable blockVar with le
 ////
 
 
+//////////////// JAVASCRIPT BASICS 2 EXERCISES //////////////////////////////////////     /*     */
+
+//Instructions: Copy the following problems and write your code answers below each of the given problems.
+
+//1. Functions:
+//1.1. Write a function named greet that accepts a name as a parameter and returns a greeting message.
+function greet(greetMessage){
+    console.log(greetMessage);
+}
+greet("Good Morning!");
+// Output : Good Morning!
+
+//1.2. Write a function add that accepts two numbers and returns their sum.
+function add(num1,num2){
+      let sum = num1 + num2;
+      return sum;
+  }
+  console.log(add(10,20));
+  // Output : 30
+
+//2. Switch:
+//2.1. Write a function getDay that accepts a number (1-7) and returns the day of the week.
+// Expected Output: getDay(1) => "Monday"
+function getDay(day){
+      switch(day){
+          case 1:
+              console.log("Monday");
+              break;
+          case 2:
+              console.log("Tuesday");
+              break;
+          case 3:
+              console.log("Wednesday");
+              break;
+          case 4:
+              console.log("Thursday");
+              break;
+          case 5:
+              console.log("Friday");
+              break;
+          case 6:
+              console.log("Saturday");
+              break;
+          case 7:
+              console.log("Sunday");
+              break;
+          default:
+              console.log("Invalid day");
+              break;
+              } 
+      }
+      getDay(1);
+// Output : Monday
+
+
+//2.2. Write a function fruitInfo that accepts the name of a fruit and returns a brief description of the fruit.
+// Expected Output: fruitInfo("apple") => "Apples are sweet and crunchy!"
+function fruitInfo(fruit){
+      if(fruit === "apple"){
+      console.log("Apples are sweet and crunchy!");
+      }
+  }
+  fruitInfo("apple");
+  // Output : Apples are sweet and crunchy!
+
+
+//3. Objects:
+//3.1. Create a person object with properties firstName, lastName, and a method fullName that returns the person's full name.
+// Expected Output: person.fullName() => "John Doe"
+let person = {
+      firstName: "John",
+      lastName: "Doe",
+      fullName: function() {
+          return `${this.firstName} ${this.lastName}`;
+      }
+  };
+  console.log(person.fullName());
+
+//3.2. Write a function getAge that accepts an object with a property birthYear and returns the age of the person.
+// Expected Output: getAge({birthYear: 2000}) => 23  (assuming current year is 2023)
+function getAge(currentYear,birthYear){
+      let ageOfPerson = currentYear - birthYear;
+      console.log(ageOfPerson);
+  }
+  getAge(2024,1996);
+  // Output: 28
+
+
+//4. Arrays:
+//4.1. Write a function getFirstElement that accepts an array and returns the first element.
+// Expected Output: getFirstElement([7, 9, 11]) => 7
+function getFirstElement(num1,num2,num3){
+      console.log(num1);
+  }
+  getFirstElement(7,9,11);
+  //or//
+  function getFirstElement(arr) {
+      return arr[0];
+  }
+  console.log(getFirstElement([7, 9, 11])); 
+  // Output: 7
+  
+4.2. Write a function getLastElement that accepts an array and returns the last element.
+// Expected Output: getLastElement([7, 9, 11]) => 11
+function getFirstElement(num1,num2,num3){
+      console.log(num3);
+  }
+  getFirstElement(7,9,11);
+  //or//
+  function getFirstElement(arr) {
+      return arr[2];
+  }
+  console.log(getFirstElement([7, 9, 11])); 
+  // Output: 11
+
+
+//5. Loops:
+//5.1. Write a function countToTen that prints numbers from 1 to 10 using a for loop.
+function countToTen(number){
+      for(let counter = 1;counter <= number;counter++){
+      console.log(`Number ${counter}`);
+            }
+  }
+  countToTen(10);
+  // Output : Number 1..Number 2.........Number 10
+
+//5.2. Write a function listArray that accepts an array and prints each element using a for loop. (prints using arrays or values)
+function listArray(arr) {
+ 
+      for (let i = 0; i < arr.length; i++) {
+          console.log(arr[i]);
+      }
+  }
+  let arrElements = [1,2,3,4,5];
+  listArray(arrElements);
+  // Output : 1...2...3...4...5
+
+//5.3. Write a function findEvenNumbers that accepts a number n and returns an array of all even numbers from 2 up to n using a while loop.                                   // ????????????????????????????????
+function findEvenNumbers(n) {
+      const evenNumbers = [];
+      let current = 2;
+  
+      while (current <= n) {
+          evenNumbers[evenNumbers.length] = current; // Add current even number to the array
+          current += 2; // Move to the next even number
+      }
+  
+      return evenNumbers;
+  }
+  
+  const result = findEvenNumbers(10);
+  console.log(result); 
+  // Output: [2, 4, 6, 8, 10]
+
+
+//5.4. Write a function multiplyArray that accepts an array of numbers and multiplies each number by 2 using a for loop.
+function multiplyArray(numbers) {
+      let result = [];              // Initializes an empty array result; its just like Zero on (let sum=0) it means we started at empty array then we gonna input on our own arrays below
+  
+      for (let i = 0; i < numbers.length; i++) {
+          result[i] = numbers[i] * 2;
+      }
+  
+      return result;
+  }
+
+  let multiArr = [1, 2, 3, 4, 5];
+  let outputArray = multiplyArray(multiArr);
+  console.log(outputArray); 
+  // Output: [2, 4, 6, 8, 10]
+
+
+//5.5. Write a function sumArray that accepts an array of numbers and returns the sum of all elements.*/
+// basic formula
+function sumArray(a,b,c){       
+            let sum = a + b + c;
+            return sum;
+      }
+console.log(sumArray(10,20,30));
+// Output : 60
+
+//advance formula using FOR LOOP
+function sumArray(numbers) {
+      let sum = 0;
+  
+      for (let i = 0; i < numbers.length; i++) {
+          sum += numbers[i];
+      }
+  
+      return sum;
+  }
+  
+  let arrNum = [10, 20, 30, 40, 50];
+  let totalSum = sumArray(arrNum);
+  console.log(totalSum); 
+  // Output: 150
 
 
 
@@ -2959,8 +3155,7 @@ Block Scope Test: Create a block using {} and define a variable blockVar with le
 
 
 
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // FUNCTION MEANS they allow the code to be called many times without repetition
 
