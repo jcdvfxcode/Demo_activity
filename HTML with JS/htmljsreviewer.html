@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML with JS</title>
+</head>
+<body>
+         <!-- id -->
+    <h1 id="hello">Hello world!</h1>
+    <script>
+
+        ////////////////////// INTERNAL JAVASCRIPT //////////////////
+
+       document.getElementById("hello").innerHTML = `<i>Hello madlang people!</i>;       
+      <p>This is my first time trying javascript!</p>`;
+    // (inner.HTML = "";) --> formula to change the keyword TEXT/caption of the first caption 
+    // Output(old) : Hello world! convert to --> 
+    // Output(new) : Hello madlang people!
+    // Output : This is my first time trying javascript!
+    // use backtick `` for making praragraph to lessen error
+
+       //or//  
+       console.log(document.getElementById("hello").innerHTML);
+       // Output : Hello world!
+
+       ////// without class or id //////////////
+       <h1>Hello world!</h1>
+       <h1>Hello world!</h1>
+    
+       console.log(document.getElementsByTagName("h1"));
+       // -->(with "s") use getElementsByTagName("h1") if we dont have class/id; and getElementsTagName can be multiple
+       // Output : Hello world! [0 index]
+
+       document.getElementsByTagName("h1")[1].innerHTML = `<i>Hello madlang people!</i>;       
+       <p>This is my first time trying javascript!</p>`;
+        // Output(changed) : Hello madlang people!
+        // Output : This is my first time trying javascript!
+
+
+            // <!-- class -->
+        <h1 class="test">Hello world!</h1>
+        <h1>Hello world!</h1>
+       
+       document.getElementByClassName("test")[0].innerHTML = `<i>Hello madlang people!</i>;       
+      <p>This is my first time trying javascript!</p>`;
+    //   Output(changed) : Hello madlang people!
+    //   Output : This is my first time trying javascript!
+    //   Output : Hello world!
+
+
+
+        //////////// querySelector() //////////////// recommended!!!!!!!!
+
+    <h1 class="test">Hello world!</h1>
+    <h1>Hello world!</h1>
+
+    document.querySelector(".test").innerHTML = "It works!";
+
+
+        // <!-- id -->
+
+        <h1 id="test">Hello world!</h1> 
+
+        document.querySelector("#test").innerHTML = "It works!";
+
+
+    ////FORMULA / CODE FOR TO-DO LIST !!!!!!!!
+    //html
+    <div class="container mt-5 shadow p-5">
+        <h1 class = "fw-bold"> To-do List</h1>
+        <p><small>Write a new to-do list.</small></p>
+        <div class="row">
+            <div class="col-10">
+                <input id="taskInput" type="text" class="form-form-control mb-5">
+                </div>
+                <div class="col-2">
+                <button id="addTask" class="btn btn-dark">Add Task</button>
+                </div>
+            </div>
+
+            <div class="card">
+        <div class="card-body" id="taskArea">
+     
+            </div>
+        </div>
+            </div>
+        </div>
+        <footer class="mt-3 text-center"><small>Developed by <b>BASE404</b></small></footer>
+
+          //external js     (NOT FORMULA JUST EXPLANATION AND SAMPLES)
+    document.querySelector("#taskArea").innerHTML = `<p>New task!</p>`;             //wrong
+    // Output : "New task!"  // it will OVERWRITE the all HTML inside of the taskArea and change to <p>New task paragraph (which is not good!)
+    // so use the += to add a new paragraph/h1 or text
+    document.querySelector("#taskArea").innerHTML += `<p>New task!</p>`;            //SEMI-correct
+    //but STILL NOT CORRECT ; the better way to do it is to REMOVE THE HTML DIV AND BUTTON below the taskArea and write it on external js
+    .document.querySelector("#addTask").addEventListener("click", () => {
+        document.querySelector("#taskArea").innerHTML += 
+        `<div>                                                                      // parent   ; div has two children the button and the span.
+                 <button class="btn btn-light markButton">Click me!</button>        //child
+                <span>${document.querySelector("#taskInput").value}</span>          //sibling of child ; because they are both inside of the parentElement
+         </div>
+             <hr>`
+    });
+
+    ////    for Each 
+
+    if (document.querySelector("taskInput").value != ""){
+        document.querySelector("#taskArea").innerHTML += 
+        `<div>                                                                      
+                 <button class="btn btn-light markButton">✅Clickme!</button>        
+                <span>${document.querySelector("#taskInput").value}</span>
+                <button class="btn btn-light deleteButton">Remove</button>         
+         </div>
+             <hr>`;
+             document.querySelector("#taskInput").value = "";
+        }else{
+            alert("Field cannot be empty!");
+        }
+
+const markButtons = document.querySelectorAll(".markButton");       // markButtons = assigned for every markButton(class).
+markButtons.forEach((markButton)=>{                 // markButton is now INDIVIDUAL; it is one single element
+    console.log(markButton);
+});
+// Output : it will print ALL(each of them) BUTTONS
+
+const markButtons = document.querySelectorAll(".markButton");
+markButtons.forEach((markButton)=>{                 
+    markButton.addEventListener("click", () => {            // it will assigned EACH of the markButton to be alert.
+        alert("Button clicked!");
+    });
+});
+// Output : It will alert "button click" every input the task/message/text/caption and it will alert if we clicked the task/message/text/caption.
+
+/////// TARGET EVENT PROPERTY --> it will get the ELEMENT where the EVENT happened !!!!!!!!!!!!!
+
+markButton.addEventListener("click", (e) => {            // (e) stands for event / or you can name on your own; e is just a sample
+    console.log(e);
+});
+// Output : it will FIND the source of the EVENT which is at BUTTON element.
+
+markButtons.forEach((markButton)=>{                 
+    markButton.addEventListener("click", (e) => {            // (e) stands for event
+        console.log(e.target);
+    });
+});
+// Output : everytime the caption/task/text/message clickED ; it will GET/mark THE BUTTON element DIRECTLY. ; or that you clickED
+
+//////remove######          // .remove();    --> is a just a FUNCTION of JAVASCRIPT that REMOVE the elements.
+markButton.addEventListener("click", (e) => {            // (e) stands for event
+        e.target.remove();                              // just a sample but not a proper code.
+    });
+// Output : it will REMOVE the BUTTON that you clickED but the text/task/message/caption are still REMAINED on the list only the button removed.
+
+e.target.parentElement.remove();                        //  formula / code to remove the text/task after click
+// Output : remove the whole text/message/task including the whole div(box).
+
+e.target.lastSibling.remove();                          //better ; formula / code to unmark or remove the marked button after clicking the button.
+// Output : It will REMOVE the mark of the button after clicking it.
+
+e.target.parentElement.lastElementChild.remove();      // better ; formula / code to remove the text/task ; RECOMMENDED !!!!!!!!!!!!!
+// Output : to remove the text/message/task but the button are still remain. Only the text removed.
+
+//// .style   --> to apply CSS at the .addEventListener
+e.target.parentElement.lastElementChild.style = "text-decorationL line-through;"; 
+// Output : to marked / crossout / line through the specific text/caption/task that you click ; it means COMPLETED or FINISH or DONE .
+
+e.target.parentElement.lastElementChild.style = "text-decorationL line-through; font-weight: 900 color: green;"; 
+// Output : crossout the text using many CSS style
+
+//// final solution / formula       (RECOMMENDED) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+const markButtons = document.querySelectorAll(".markButton");
+markButtons.forEach((markButton)=>{                 
+    markButton.addEventListener("click", () => {            
+        e.target.parentElement.lastElementChild.style = "text-decorationL line-through; font-weight: 900 color: green;"; 
+        e.target.remove();
+    });
+});
+// Output : After adding the (2)tasks/texts/messages ; the specific task/text that you click will crossout(remove the button)
+// It will REMOVE the BUTTON but the TEXT/CAPTION/TASK will REMAINED but its CROSSOUT/LINE-THROUGH using the applied CSS style.
+// RECOMMEND SOLUTION OR FORUMULA FOR TO-DO LIST / TASKS.
+
+
+// DELETE with delete button
+document.querySelector("#addTask").addEventListener("click", () => {
+
+    if (document.querySelector("taskInput").value != ""){
+        document.querySelector("#taskArea").innerHTML += 
+        `<div>                                                                      
+                 <button class="btn btn-light markButton">✅Clickme!</button>        
+                <span>${document.querySelector("#taskInput").value}</span>
+                <button class="btn btn-light deleteButton">Remove</button>  
+                 <hr>       
+         </div>
+            `;
+             document.querySelector("#taskInput").value = "";
+        }else{
+            alert("Field cannot be empty!");
+        }
+    
+const deleteButtons = document.querySelectorAll(".deleteButton");
+deleteButtons.forEach((deleteButton)=>{                 
+    deleteButton.addEventListener("click", () => {            
+        e.target.parentElement.remove();
+        });
+    });
+});
+
+
+
+
+
+    // other sample
+
+    <button>Click me!</button>
+
+    document.querySelector("button").innerHTML = "I am a button!";
+    // if direct tag; just use the tag name.
+
+    document.querySelector("button").style.backgroundColor = "red";
+    //                               css  . (property)     = color             (property sample: padding,color. etc just look for doucmentation)
+    // if you want to change the color without using css use the .style.backgroundColor ="";
+    document.querySelector("button").style.padding = "100px";
+
+
+    ///
+    let name = "John Doe";
+
+document.querySelector("#test").innerHTML = name;
+// Output : John Doe
+
+
+///// INLINE JAVASCRIPTS EVENTS
+
+
+    <button onclick="console.log(`clicking button`)">Click me!</button>
+    <button onclick="alert(`clicking button`)">Click me!</button>
+//         attribute
+// Output : alert : clicking button
+
+
+// to alert or print the CAPTION of BASE404 just use (this.innerHTML) then the message/caption
+<button onclick="alert(this.innerHTML)">BASE404</button>
+// Output : alert : BASE404
+
+
+<button onclick="testFunction()">BASE404</button>
+// Output : alert : Are you sure you want to?
+// external javascript <---------<script src="script.js"></scrpt>
+function testFunction(){
+    confirm("Are you sure you want to?");
+}
+
+//////
+
+<button onclick="testFunction()">BASE404</button>
+// external javascript <---------<script src="script.js"></scrpt>
+    let paddingValue = 50;
+  
+    document.querySelector("button").style.paddingValue + "px";
+
+    function testFunction(){
+        paddingValue += 50;
+        document.querySelector("button").style.paddingValue + "px";
+    }
+    // Output : the button will get bigger and bigger everytime it click it; will add 50px every clicked the button
+
+///////
+////// JAVASCRIPT EVENTS SAMPLES
+<button onmouseenter="testFunction()">BASE404</button>
+//      onmouseenter is javascript event   --> its like hover; when you drag your curserarrow to button(not click just drag) it get bigger and when you remove the curser it will smaller again
+<button onclick="testFunction()">BASE404</button>
+//      onclick ---> the button will get bigger and bigger everytime it click it; will add 50px every clicked the button
+<button onmouseleave="testFunction()">BASE404</button>
+//      onmouseleave  --> when you drag your curserarrow inside then remmove the curser it will get big
+
+
+///////////////////////////////////     EVENT LISTENERS     ////////////////////////////////////////////////////////////////////////////
+//      --> It waits for action to be executed and it will run a code. (it will listen if their gonna do some action)
+//      ---> Doing events outside the HTML; not inline javascript but PURE EXTERNAL JS. (javascript alone!)
+
+
+//////// CALLBACK FUNCTION      --> function passed as an argument
+// html
+<button id="btn">BASE 404</button>
+//external js
+document.querySelector("#btn").addEventListener("click", testFunction());          
+//  .addEventListener()  --> it will accept 2 PARAMETERS
+// CALLBACK FUNCTION  --->   passing a function to another function ; just like inputing the value on the parameter using function();
+
+///////// ANONYMOUS FUNCTION       --> function(){ });  --> function without a function name
+// --> is a Unknown name or unname (no name)
+// --> if we dont want to use a function (sample: "function testFunction(){paddingValue +=50;document.querySelector("button").style.paddingValue + "px"; }" ) ; we can create an anonymous function directly into our listener
+document.querySelector("#btn").addEventListener("click", function(){            // recommended!!!!!
+    paddingValue += 50;
+    document.querySelector("button").style.paddingValue + "px";
+}); 
+/////// ARROW FUNCTION ----> shorter way to write a function
+// arrow function is commonly used for callback functions.
+// anonymous function is same as like ARROW FUNCTION.       ( it is a just SHORTER METHOD for anonymous function; not using a keyword of FUNCTION but using the ARROW)
+document.querySelector("#btn").addEventListener("click", ()=>{
+
+});
+
+///Sample of arrow function using callback function#########
+function myFunction(){
+
+}
+//or//
+const myFunction = () => {
+    return 0;
+}
+
+document.querySelector("#addTask").addEventListener("click", () => {
+
+});
+
+//html
+<input type = "text" id = "inpt"></input>
+// external js
+document.querySelector("#btn").addEventListener("keyup", function(){
+    alert("test!");
+});
+// Output : when you press the 1 letter on keyboard then will show/popup the event or gonna alert the "test"
+document.querySelector("#btn").addEventListener("keydown", function(){
+    alert("test!");
+});
+//keydown is useful for creating a games in the browser
+// it will appear automatically the popup or alert the "test"
+
+/////
+//html
+<h1 id = "test">Hello world!</h1>
+<input type = "text" id = "inpt"></input>
+//external js
+document.querySelector("#btn").addEventListener("keydown", function(){
+    document.querySelector("#test").innerHTML = document.querySelector("#inpt").value;      // ().value --> is code for alert/print/append/etc.. the TEXT/CAPTION/MESSAGE you input in textbox
+});
+// Output : it will appear/show on html page or on H1 the text/caption/message/paragraph what you type inside the box(type="text" in HTML)
+
+
+///////////////////////////////////
+
+
+
+
+
+
+
+
+
+    </script>
+/////////////////////////////////////////////////
+ <!-- EXTERNAL JAVASCRIPT -->
+
+ <script src="script.js"></script>
+
+
+</body>
+</html>
+
+
+
+ <!-- EVENTS is something that could be happend in web page 
+  (samples of events: hover, loading page , clicking button, clicking mouse&keyboard, or CLICK EVENTS)
+  most and basic to do it of events in INLINE JAVASCRIPT-->
+
+
+  <!--  ().value is code for alert/print/append/etc.. the TEXT/CAPTION/MESSAGE you input in the textbox -->
+
+  <!--  ().innerHTML is code for <h1>TEXT/CAPTION</h1> or paragraph in HTML for printing/show the text/caption/paragraph in HTML 
+    or what inside of the (element).innerHTMl -->
+
+  <!--  .addEventListener("click", () => {}); is for FUNCTION EVENTS what the javascript will do in HTML -->
+
+  <!--  ().style.backgroundColor = "red"; this is just a sample of ().style for CSS -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--  append is to post/save the TEXT after clicking the button -->
+
+<!-- Dynamically means creating a CLASS outside of HTML but in external JS -->
+
+<!-- when you use querySelector() ; it will only return the first element not all ,so use querySelctorAll(".markbutton") for class selector -->
+
+<!-- Difference between querySelector and querySelctorAll
+ querySelector is it will just return a SINGLE(one) ELEMENT. but
+ querySelectorAll it will return an ARRAY -->
+
+ <!-- iterable objects means "many". -->
+  <!-- temporary variables means its a variable name for value/prperties of array 
+   (samples:) let letters(variable); letter(temporary variablename) = [a,b,c](value/properties of array) that can access index number(0,1,2).
+   then if console.log(letter) the OUTPUT are a,b,c . -->
+
+
+

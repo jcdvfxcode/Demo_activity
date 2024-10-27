@@ -3150,6 +3150,341 @@ function sumArray(numbers) {
 
 
 
+function myFunction(){
+      return "Hello world!";
+}
+
+console.log(myFunction());
+
+// Output : Hello world!
+
+/////////////////
+
+let arr = [1, true, "Hello world", 4, 5];
+//               array elements           --> values inside the array
+console.table(arr);
+
+// Output : 
+┌─────────┬───────────────┐
+│ (index) │    Values     │
+├─────────┼───────────────┤
+│    0    │       1       │
+│    1    │     true      │
+│    2    │ 'Hello world' │
+│    3    │       4       │
+│    4    │       5       │
+└─────────┴───────────────┘
+
+
+/// Two dimensional array
+
+let row = [
+      [1, 2, 3, 4, 5],
+      ['a', 'b', 'c'],
+          ];
+
+console.table(row);
+
+// Output :
+┌─────────┬─────┬─────┬─────┬───┬───┐
+│ (index) │  0  │  1  │  2  │ 3 │ 4 │
+├─────────┼─────┼─────┼─────┼───┼───┤
+│    0    │  1  │  2  │  3  │ 4 │ 5 │           // 5 arr elements 
+│    1    │ 'a' │ 'b' │ 'c' │   │   │           // 3 arr elements
+└─────────┴─────┴─────┴─────┴───┴───┘
+
+/////////////////
+
+let students = [
+      {
+          name: "Juan Dela Cruz",
+          bootcamp: "BASE404",
+          grade: 100
+      },
+      {
+          name: "John Doe",
+          bootcamp: "BASE404",
+          grade: 50
+      },
+      ];
+      
+  console.log(students);
+
+  // Output :
+                                                                              /*
+  [
+   { name: 'Juan Dela Cruz', bootcamp: 'BASE404', grade: 100 },
+  { name: 'John Doe', bootcamp: 'BASE404', grade: 50 }
+  ]
+                                                                              */
+
+
+  console.log(students[0].grade);
+  // Output : 100
+
+  console.log(students[1].name);
+  // Output : John Doe
+
+
+///Sample1#####
+
+let students = [
+      {
+          name: "Juan Dela Cruz",
+          bootcamp: "BASE404",
+          grade: 100
+      },
+      {
+          name: "John Doe",
+          bootcamp: "BASE404",
+          grade: 50
+      },
+      {
+            name: "Maria Santos",
+            bootcamp: "BASE404",
+            grade: 70,
+            activities: [
+                  "Activity 1",
+                  "Activity 2",
+                  "Activity 3"
+            ]
+        },
+      ];
+      
+  console.log(students[students.length-1]);                 // put the .length-1 inside the bracket[] because its an INDEX insted of using 3 index just use .length-1 to get the total array without counting
+
+  // Output :
+                                                                                                /*
+  {
+  name: 'Maria Santos',
+  bootcamp: 'BASE404',
+  grade: 70,
+  activities: [ 'Activity 1', 'Activity 2', 'Activity 3' ]
+}
+                                                                                                */
+
+
+console.log(students[students.length-1].activities[1]); 
+
+// Output : Activity 2
+
+
+/// Create a function that takes a student as an argument and returns their average grade.
+// Object of arrays
+const students = {                              // object with array properties
+      John: [85, 90, 92],
+      Jane: [88, 84, 91],
+      Smith: [89, 87, 82],
+      Emil: [81, 99, 72],
+};
+
+function averageGrade(student){
+      console.log(student);
+}
+
+averageGrade(students.John);
+
+// Output : [ 86, 90, 92 ]
+
+function averageGrade(student){
+      for(let i = 0; i < student.length; i++){
+      console.log(student[i]);
+      }
+}
+
+// Output : 85
+// Output : 90
+// Output : 92
+
+//adding the arrays
+function averageGrade(student){                       // parameter "student" is made name or variable for the value of array or FOR ARRAYS[85,90,92] to console/print the "value" inside the array -> Output: 85,90,92
+      let averageGrade = 0;
+      for(let i = 0; i < student.length; i++){
+            averageGrade += student[i];
+            }
+      console.log(averageGrade);
+}
+averageGrade(students.John);
+
+// Output : 267
+
+// Return the average grade after add/sum
+function averageGrade(student){
+      let averageGrade = 0;
+      for(let i = 0; i < student.length; i++){
+            averageGrade += student[i];
+            }
+      return averageGrade / student.length;            //instead of using divided by 3; use "student.length" to automatic consider all array
+}
+console.log(averageGrade(students.John));
+
+// Output : 89.333333333333
+
+///////////////////
+
+// Write a function that takes a product ID as an argument and returns the respective product, or NULL if the product doesn't exist
+// Array with object
+
+const products = [
+      { id: 1, name: "Laptop", price: 1000},
+      { id: 2, name: "Mouse", price: 20},
+      { id: 3, name: "Keyboard", price: 50},
+      { id: 4, name: "Monitor", price: 150},
+];
+
+// Iterations
+// For, do-while, while loops
+
+// Iterables      --> require an array or an object for them to work
+// For let
+
+function findProduct(id){
+      for(let product of products){   
+            console.log(product.name); 
+                        // products is our arrays.
+/* what for "let" will do is that for every elements in this array is gonna input to temporary variable which is the "product" variable; product is made variable to input the array
+example: product =  { id: 1, name: "Laptop", price: 1000}, then next: { id: 2, name: "Mouse", price: 20}, then next......... until end!      
+product is always the value/properties of array or inside of the array[value/properties]*/
+            }
+}
+findProduct();
+
+// Output : Laptop
+// Output : Mouse
+// Output : Keyboard
+// Output : Monitor
+
+function findProduct(id){
+      for(let product of products){  
+            if(id == product.id){
+                  return product;
+            }
+      }
+      return null;
+}
+
+console.log(findProduct());         or console.log(findProduct(5));
+// Output : null
+console.log(findProduct(3));
+// Output : { id: 3, name: 'Keyboard', price: 50 }
+
+
+/// Write a function that will return the total price of all products
+
+const products = [
+      { id: 1, name: "Laptop", price: 1000},
+      { id: 2, name: "Mouse", price: 20},
+      { id: 3, name: "Keyboard", price: 50},
+      { id: 4, name: "Monitor", price: 150},
+];
+
+function totalPrice(){
+      let totalPrice = 0;                            // start with the value of 0; for addition (0 + 1000 = 1000 + 20 = 1020 + 50 = 1070 = 150 = 1220)
+      for(let product of products){                  // "product" variable are the properties inside the arrays ( id: 1, name: "Laptop", price: 1000},{ id: 2, name: "Mouse", price: 20},{ id: 3, name: "Keyboard", price: 50},{ id: 4, name: "Monitor", price: 150},) 
+            totalPrice += product.price;             // totalPrice is equal to 0 and then product.price is the properties of the array and ".price" is the mention property/value of the array(price: 1000,price: 20,price: 50,price: 150)
+      }
+      return totalPrice;
+}
+
+console.log(totalPrice());
+
+//Output : 1220
+
+
+/////////////////////////////////
+
+
+// Error Handling
+// try catch statemnet
+
+try {
+      // block of code to be executed that may or may not result in an error
+      // code that not sure if it works or may not ; that we try it
+}catch(err{             // this will be happend if the code will error
+      console.log("There has been an error!");
+})
+
+
+//////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
+
+////////////////////////      JAVASCRIPT DOM (Document Object Mode) AND MANIPULATION      ////////////////////////////////////////////
+
+////////// INTEGRATING HTML DOM WITH JAVASCRIPT 1 //////////////
+
+////// ---> Every element in HTML doucment is an OBJECT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+///////////// for Each /////////////
+
+let letters = ["a","x","z","w"];
+letters.forEach(letter){                  // not sure
+      console.log(letter);
+}
+// Output : a,x,z,w
+// It will print the value/properties inside of array using the temporary variable of "letter"
+// It means it will increment EACH string or value/prpoerties of array then give it FUNCTION EACH of them.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3164,19 +3499,6 @@ function sumArray(numbers) {
 // ITERATIONS means paulit ulit or ulit ulitin. Continous printing.
 
 // FILO means First in, Last Out
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
