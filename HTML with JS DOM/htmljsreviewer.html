@@ -359,6 +359,250 @@ document.querySelector("#btn").addEventListener("keydown", function(){
 </body>
 </html>
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////
+/////////////////////////////////
+
+//////////////////////// DOM by Udemy ////////////////////////////
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM by Udemy</title>
+</head>
+<body onload="alert('Welcome');">           
+    <!-- // Output : Welcome (Pop-up alert) // Inline JS  -->
+     <h1>Hello Wolrd!</h1>
+  
+   <!-- //or Internal JS  -->
+    <script type="text/javascript">
+        alert("Welcome");
+        // Output : Welcome (Pop-up alert)  -->
+   
+
+    // External JS by Udemy
+     <h1>Hello</h1>
+     //external js
+      document.querySelector("h1").innerHTML = "Good Bye";
+
+      //////////////////////////////////
+
+      document.querySelector("input").click();
+      // Output : the checkbox will check automatically because it commanded by javascripts
+
+
+    // PROPERTIES describe something about the object(ex.colour,number of seats&doors)
+    /*
+    Get Property:
+               car.colour;                   // Output : red   
+     Set Property:  
+               car.numberOfDoors = 0;       // Output : 0 doors ( the car now is no(zero) doors)
+   
+    // METHODS are the things that the object can do.(ex. .brake(), .drive() .park())
+    CALL METHOD:
+               car.drive();                   // Output : moving/driving car
+    */
+
+//// button element
+    // PROPERTIES
+    .innerHTML
+    .style
+    .firstChild
+
+    // METHODS
+    .click()
+    .appendChild()
+    .setAttribute()
+
+///////////////////////////
+
+<button style=":active color:red;">Click Me</button>
+
+<ul>
+  <li class="list"> 
+     <li class="list">Second</li><a href="https://www.google.com">Google</a>
+  <li class="list">Second</li>
+  <li class="list">Third</li>
+  </li>
+</ul>
+
+
+//EXternal JS
+document.getElementsByTagName("li")[2].style.color = "red";
+// Output : the index 2 of the ("li")array are change the color to RED
+
+document.getElementsByTagName("li")[2].length;
+// Output : 3
+document.getElementsByClassName("btn")[0].style.color = "blue";
+// getElements (plural)  with S is uses for array with many choices or index and input the index number to get that specific element
+document.getElementByTagName("title")
+
+document.getElementByTagName("").innerHTML = "Hi";      // for specific or 1 elemtents only. (singular not group element)
+
+doucment.querySelector("li a");         // getting the element below of the element; parent/child element
+// Output :  <a href="https://www.google.com">Google</a>
+//test on INSPECT of liveserver of udemy html sample
+
+doucment.querySelector("li.item");
+// Output :   <li class="list">Second</li><a href="https://www.google.com">Google</a>
+
+document.querySelector(".list a");
+// Output : <a href="https://www.google.com">Google</a>
+
+document.querySelector(".list .item")[2].style.color = " blue";
+// Output : 'Third' is now BLUE
+
+
+////////
+document.querySelector("button").style.backgroundColor = "yellow";
+// Output : the button "click me" backGround is now color Yellow
+
+//////////////////////
+// Just look in w3school for the documentation of HTML DOM
+// here's the link of HTML DOM https://www.w3schools.com/jsref/dom_obj_style.asp
+///////////////////////
+
+/// HTML
+<button class = "btn"> Click me </button>
+//external css
+document.querySelector("button").classList;
+// Output : "btn"       //  It gives a list of the classes that are attached to this element;
+document.querySelector("button").classList.add("botones");
+// Output : <button class = "btn botones"> Click me </button> ; it will ADD new class on that button element named "botones".
+document.querySelector("button").classList.remove("botones");
+// Output : it will remove the class="botones" on that html button element.
+document.querySelector("button").classList.toggle("botones");
+// Output : true or false (alternate every input the toggle)    // the button will BLINKING (ON and OFF) because of the toggle
+document.querySelector("button").classList.toggle("botones");
+// Output : false or true (alternate every input the toggle)    // the button will BLINKING (OFF and ON) because of the toggle
+
+
+//// HTML
+<h1>Hello</h1>      // html
+//// CSS
+.huge {
+    font-size: 10rem;
+    colr: red;
+    font-weight: bold;
+}
+////External JS
+document.querySelector("h1").classList.add("huge");
+// Output : <h1 class = "huge">Hello</h1>
+// Output : the Hello is 10rem(big size); then turns to red color; then the text is now BOLD
+
+
+////html
+<a href="https://www.google.com">Google</a>
+///// external JS
+document.querySelector("a");
+// Output : <a href="https://www.google.com">Google</a>
+document.querySelector("a").getAttribute("href");
+// Output : "https://www.google.com"
+ocument.querySelector("a").getAttribute("href", "https://www.google.com");      // the first attribute is (which attribute want to get, value you want to replace)
+// Output : "https://www.google.com"            // but the text is still <h1>GOOGLE but the link is changed to BING.COM if you click it
+
+
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////
+////////////////////////////////
+
+/////// DICE GAME by Udemy
+// Exteral JS from HTML DICE GAME by  Udemy
+let randomNumber1 = Math.floor(Math.random() * 6) + 1;      // Output : 1 to 6
+
+let randomDiceImage = "dice" + randomNumber1 + ".png";      // Output : dice1.png to dice6.png    (picture of dice1-6) //dice(string) + random number 1 to 6 + .png
+
+let randomImageSource = "images/" + randomDiceImage;        // Output : images/dice1.png to images/dice6.png    //sample from html: src="images/dice6.png">
+
+let image1 = document.querySelectorAll("img")[0];           // Getting the img element using querySelectorAll and array Index number
+
+image1.setAttribute("src", randomImageSource);              // Output : the Player 1 image is changing into different numbers base on image
+
+
+
+let randomNumber2 = Math.floor(Math.random() * 6) + 1;
+
+let randomImageSource2 = "images/dice" + randomNumber2 + ".png";
+
+document.querySelectorAll("img")[1].setAttribute("src", randomImageSource2);
+
+
+// If player 1 wins
+
+if( randomNumber1 > randomNumber2) {
+    document.querySelector("h1").innerHTML = "🚩 Player 1 Wins!";
+}else if (randomNumber2 > randomNumber1) {
+    document.querySelector("h1").innerHTML = "Player 2 Wins! 🚩";
+}
+else {
+    document.querySelector("h1").innerHTML = "Draw!";
+}
+//HTML OF THE DICE GAME
+<body>
+    <div class="container">
+      <h1>Refresh Me</h1>
+
+      <div class="dice">
+        <p>Player 1</p>
+        <img class="img1" src="images/dice6.png">
+      </div>
+
+      <div class="dice">
+        <p>Player 2</p>
+        <img class="img2" src="images/dice6.png">
+      </div>
+    </div>
+
+    <script src="scripts.js"></script>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
  <!-- EVENTS is something that could be happend in web page 
@@ -402,5 +646,12 @@ document.querySelector("#btn").addEventListener("keydown", function(){
    (samples:) let letters(variable); letter(temporary variablename) = [a,b,c](value/properties of array) that can access index number(0,1,2).
    then if console.log(letter) the OUTPUT are a,b,c . -->
 
+
+
+   <!-- HEIRARCHY of the external css(styles.css) and external javscript (scripts.js) is which of these two are on the top that would be the first to applied
+   in the loading Web page. (sample: scripts.js is the top on the HTML and the link=ref"styles.css" is the botton and you input on the CSS of <h1 color:red> 
+    and for the javascripts you inpun a pop-up alert "welcome", the first gonna activates/shows is the pop-up alert of "welcome" before the h1 changes the color to red) -->
+
+    <!-- PROPERTIES describe something about the object(ex.colour,number of seats&doors) and the METHODS are the things that the object can do.(ex. .brake(), .drive() .park() -->
 
 

@@ -2671,6 +2671,20 @@ Math.floor(n * 6) + 1
 console.log(n)
 //= 5.99 // (6) is the MAX number you want if you want until 6. Just like slice and dice method.??
 
+/////////////////////////////////////
+// Give RANDOM number but it DECIMAL      (formula)
+Math.random() * 6;
+2.2437203470918288
+Math.random() * 6;
+2.300755154719716
+
+// A RANDOM number but ROUNDED OFF        (formula)
+Math.floor(Math.random() * 6) + 1;
+2
+Math.floor(Math.random() * 6) + 1;
+6
+// Add +1 ; because if without +1 and just Math.floor(Math.random() * 6) the numbers count are just until 5; so need to +1 to reach 6.
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
