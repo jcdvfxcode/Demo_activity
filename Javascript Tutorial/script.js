@@ -3448,20 +3448,161 @@ letters.forEach(letter){                  // not sure
 
 
 
+////////////////////////////////////////////////////////////////////
+////////////////////////////////
+
+//// Higher Order Function
+//// CHOOSE / SELECT THE FUNCTION //
+// ---> Choosing or selecting what function are gonna you if add or multiply
+
+function add(num1, num2) {
+      return num1 + num2;
+}
+
+function mulitply(num1, num2) {
+      return num1 * num2;
+}
+
+function calculator(num1, num2, operator) {
+      return operator (num1, num2);
+}
+
+calculator (4,5,add);
+// Output : 9                 // it used add function
+
+calculator (4,5,multiply);
+// Output : 20                 // it used multiply function
+
+debugger;                     // dubugger is a system that use to see the explantion how the functions work by showing the values of each parameters.
+calculator(3,4,multiply);
+// Output : 12
 
 
+//////////////////////////////////////////////////////////////////////////////
+
+/// CONSTRUCTOR FUNCTION by Udemy //////////
+/// --> must capitalized the first letter at fnction name.
+
+function BellBoy (name, age, hasWorkPermit, languages) {                      // function name has to be capitalized, not camel casing just use "BellBoy" bigletter at firstlettername to determined it is a CONSTRUCTOR FUNCTION
+      this.name = name;
+      this.age = age;
+      this.hasWorkPermit = hasWorkPermit;
+      this.languages = languages;
+}
+
+/// Initialise Object
+// advanced method by using "NEW" on Object Properties with arrays
+
+let bellBoy1 = new BellBoy ("Timmy", 19, true, ["French", "English"]);              //after "new" must capitalized the first letter on function name!!!
+
+let bellBoy1 = new BellBoy ("Jimmy", 21, false, ["English", "German"]);
 
 
+////
+
+/// Initialise Object
+//shorter version
+let bellBoy1 = new BellBoy ("Timmy", 19, true, ["French", "English"]);
+
+//longer/hard version of using Object properties
+let bellBoy1 = {
+      name: "Timmy",
+      age: 19,
+      hasWorkPermit: true,
+      languages: ["French", "English"]
+}
+
+////Sample1###########
+/// old/long/hassle version
+let houseKepper1 = {
+      yearsOfExperience: 12,
+      name: "Jane",
+      cleaningRepertoire: ["bathroom", "lobby", "bedroom"]
+}
+
+let houseKepper2 = {
+      yearsOfExperience: 14,
+      name: "Janet",
+      cleaningRepertoire: ["bath", "room", "sala"]
+}
 
 
+/// Constructor Function      (advanced JS)
+// advanced method/version for object property with array
+// FORMULA for easy calling and input function on object properties parameters
+function HouseKeeper (yearsOfExperience, name, cleaningRepertoire) {
+      this.yearsOfExperience = yearsOfExperience;
+      this.name = name;
+      this.cleaningRepertoire = cleaningRepertoire;
+}
+// calling funtion with input value on parameters
+let houseKepper1 = new HouseKeeper(9,"Tom", ["lobby", "bedroom"]);
+console.log (houseKepper1.name);
+// Output : Tom
 
+// calling funtion with input value on parameters
+let houseKepper2 = new HouseKeeper(14,"Janet", ["bath", "room", "sala"]);
+console.log(houseKepper2.age);
+// Output : 14
 
+//////
 
+let bellBoy1 = {
+      name: "Timmy",
+      age: 19,
+      hasWorkPermit: true,
+      languages: ["French", "English"]
+      moveSuitcase: function() {
+            alert ("may I take your suitcase?");
+            pickUpSuitcase();
+            move();
+      }
+}
+// Call method
+bellBoy1.moveSuitcase();
+// Output: it will perform that method (the suitcase is gonna move).
 
+/// or // advanced method
 
+function HouseKeeper (yearsOfExperience, name, cleaningRepertoire) {
+      this.yearsOfExperience = yearsOfExperience;
+      this.name = name;
+      this.moveSuitcase: function() {
+            alert ("may I take your suitcase?");
+            pickUpSuitcase();
+            move();
+      }
+}
 
+///////////
+///Sample1####
 
+function HouseKeeper (yearsOfExperience, name, cleaningRepertoire) {
+      this.yearsOfExperience = yearsOfExperience;
+      this.name = name;
+      this.cleaningRepertoire = cleaningRepertoire;
+      this.clean = function () {
+            alert ("cleaning in progress...");
+      }
+}
+let houseKepper1 = new HouseKeeper (12, "James", ["bedroom"]);
+/// Calling function method
+houseKepper1.clean();
+// Output : "cleaning in progress..." // it will ALERT on the Webpage
 
+/// CONSTRUCTOR FUNCTION on HTML JS reviewer sample at external JS
+
+function Audio (fileLocation) {
+      this.fileLocation = fileLocation;
+      this.play = function () {
+          // Tap into the audio hardware
+          // Check the file at fileLocation exists
+          // Check the file at fileLocation is a sound file
+          // Play the file at fileLocation
+      }
+  }
+  let tom1 = new Audio ("sounds/tom-1.mp3");
+  tom1.play();
 
 
 

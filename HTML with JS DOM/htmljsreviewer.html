@@ -503,6 +503,182 @@ document.querySelector("a").getAttribute("href");
 ocument.querySelector("a").getAttribute("href", "https://www.google.com");      // the first attribute is (which attribute want to get, value you want to replace)
 // Output : "https://www.google.com"            // but the text is still <h1>GOOGLE but the link is changed to BING.COM if you click it
 
+////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////
+///////////////////////////////
+
+//////////////// ROCK PAPER SCISSOR GAME /////////////////////////////
+
+//html rock paper scissor game
+// EXTERNAL JS
+document.querySelector
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////
+///////////////////////////////
+
+//////////////// DRUM KIT by Udemy /////////////////////////////
+
+//external js
+// ADVANDCE DOM JS
+let numberOfDrumButtons = doucment.querySelectorAll(".drum").length;        //(".drum") ---> i specified the .drum to target all tagname of drum on the button to exclude all the other possible button elements.
+for (let i = 0; i < numberOfDrumButtons; i++) {
+
+    document.querySelectorAll(".drum")[i].addEventListener("click", function () {
+    alert ("I got clicked!");
+});
+}
+// Output : It will ALERT on the webpage after clicking the BUTTON the "I got clicked!" 
+// SAME RESULTS of the basic dom js but this is ADVANCE DOM
+
+/*or
+let numberOfDrumButtons = doucment.querySelectorAll(".drum").length;
+for (let i = 0; i < doucment.querySelectorAll(".drum").length;
+*/
+
+
+// BASIC DOM JS
+document.querySelector("button").addEventListener("click", handleClick);        // Should not put ()parethesis in the handleClick because it will alert immediately on the webpage without clicking the button.
+
+function handleClick(){
+    alert ("I got clicked!");
+}
+//or//      use anonymous function              // recommended for basic dom js!!!!!!!!!!!!!
+document.querySelector("button").addEventListener("click", function () {
+    alert ("I got clicked!");
+});
+// Output : It will ALERT on the webpage after clicking the BUTTON the "I got clicked!" 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/// How to input / apply / insert SOUNDS on HTML        // How to know which key press?
+
+///Sample###
+/// HTML
+<body>
+<h1 id="title">Drum 🥁 Kit</h1>
+  <div class="set">
+    <button class="w drum">w</button>
+    <button class="a drum">a</button>
+    <button class="s drum">s</button>
+    <button class="d drum">d</button>
+    <button class="j drum">j</button>
+    <button class="k drum">k</button>
+    <button class="l drum">l</button>
+  </div>
+</body>
+/// EXTERNAL JS DOM
+for (let i = 0; i < numberOfDrumButtons; i++) {
+
+document.querySelectorAll(".drum")[i].addEventListener("click", function () {
+console.log (this);             // "this" is use for identifying what object that you clicked or "this" is a button that triggered the event ; it will console (sample:<button class="a drum">a</button>,<button class="s drum">s</button>)
+});
+}
+// Output : <button class="w drum">w</button>
+// Output : <button class="a drum">a</button>
+// Output : <button class="s drum">s</button>
+// Output : <button class="d drum">d</button>
+// Output : <button class="j drum">j</button>
+// Output : <button class="k drum">k</button>
+// Output : <button class="l drum">l</button>
+
+// but if you input the "(this.innerHTML);"     --> it will console/print the value after you click the images of drums at HTML webpage
+console.log (this.innerHTML);     
+// Output :     w
+// Output :     a
+// Output :     s
+// Output :     d
+// Output :     j
+// Output :     k
+// Output :     l
+
+// if you want to change the color after clicking the object/letter in HTML webpage apply CSS at external JS
+for (let i = 0; i < numberOfDrumButtons; i++) {
+
+document.querySelectorAll(".drum")[i].addEventListener("click", function () {
+this.style.color = "white";  
+});
+}
+// the letters w,a,s,d,j,k,l will change color into white everytime you clicked it because you get the identity of "click" at eventListenr-function by using "this"
+
+//// SWITCH STATEMENT
+for (let i = 0; i < numberOfDrumButtons; i++) {
+
+document.querySelectorAll(".drum")[i].addEventListener("click", function () {
+
+    let buttonInnerHTML = this.innerHTML;           // this.innerHTML      --> is to target all object or letter/image/drums on HTML webpage
+
+switch (buttonInnerHTML) {
+    case "w":
+      let tom1 = new Audio("sounds/tom-1.mp3");
+      tom1.play();
+      break;
+
+    case "a":
+      let tom2 = new Audio("sounds/tom-2.mp3");
+      tom2.play();
+      break;
+
+    case "s":
+      let tom3 = new Audio('sounds/tom-3.mp3');
+      tom3.play();
+      break;
+
+    case "d":
+      let tom4 = new Audio('sounds/tom-4.mp3');
+      tom4.play();
+      break;
+
+    case "j":
+      let snare = new Audio('sounds/snare.mp3');
+      snare.play();
+      break;
+
+    case "k":
+      let crash = new Audio('sounds/crash.mp3');
+      crash.play();
+      break;
+
+    case "l":
+      let kick = new Audio('sounds/kick-bass.mp3');
+      kick.play();
+      break;
+
+
+    default: console.log(buttonInnerHTML);
+
+   }
+ });
+}
+// Output : It will play sound after clicking the drums in HTML webpage
+
+/// CONSTRUCTOR FUNCTION on JS reviewer
+
+function Audio (fileLocation) {
+    this.fileLocation = fileLocation;
+    this.play = function () {
+        // Tap into the audio hardware
+        // Check the file at fileLocation exists
+        // Check the file at fileLocation is a sound file
+        // Play the file at fileLocation
+    }
+}
+let tom1 = new Audio ("sounds/tom-1.mp3");
+tom1.play();
+
 
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////
@@ -569,6 +745,8 @@ else {
 
 
 
+
+
     </script>
 </body>
 </html>
@@ -593,8 +771,9 @@ else {
 
 
 
-
-
+// HOW TO CHANGE TEXT ON WEBPAGE
+// go to Google then Inspect
+// find the $0 then look what inside of the $0 then type $0.innerHTML = "Gogolitos" (rename it what you want)
 
 
 
