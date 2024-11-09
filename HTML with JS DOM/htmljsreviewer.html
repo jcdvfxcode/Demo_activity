@@ -513,6 +513,10 @@ ocument.querySelector("a").getAttribute("href", "https://www.google.com");      
 // EXTERNAL JS
 document.querySelector
 
+////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////
+
+
 
 
 
@@ -665,6 +669,152 @@ switch (buttonInnerHTML) {
 }
 // Output : It will play sound after clicking the drums in HTML webpage
 
+
+///// KEYPRESS /  KEYDOWN FUNCTION /////
+// FULL CODE FOR DRUMKIT
+
+// Detecting Button Press
+
+let numberOfDrumButtons = doucment.querySelectorAll(".drum").length;        //(".drum") ---> i specified the .drum to target all tagname of drum on the button to exclude all the other possible button elements.
+for (let i = 0; i < numberOfDrumButtons; i++) {
+
+    document.querySelectorAll(".drum")[i].addEventListener("click", function () {
+        let buttonInnerHTML = this.innerHTML;           // "tihs.innerHTML" --> to see/show what keyboard letter that you "press".
+
+        makeSound(buttonInnerHTML);                     // then send this to command using the makeSound
+
+        buttonAnimation(buttonAnimation);
+    });
+} 
+
+    // Detecting Keyboard Press
+
+    document.addEventListener("keydown", function(event) {          // and if the "keydown" function detected
+       
+    makeSound (event.key);                                      // and then send to event.key ("key" property of the event)
+
+    buttonAnimation(event.key);
+
+    });
+
+    function makeSound(key) {
+
+        switch (key) {                                              // key parameter
+    case "w":
+      let tom1 = new Audio("sounds/tom-1.mp3");
+      tom1.play();
+      break;
+
+    case "a":
+      let tom2 = new Audio("sounds/tom-2.mp3");
+      tom2.play();
+      break;
+
+    case "s":
+      let tom3 = new Audio('sounds/tom-3.mp3');
+      tom3.play();
+      break;
+
+    case "d":
+      let tom4 = new Audio('sounds/tom-4.mp3');
+      tom4.play();
+      break;
+
+    case "j":
+      let snare = new Audio('sounds/snare.mp3');
+      snare.play();
+      break;
+
+    case "k":
+      let crash = new Audio('sounds/crash.mp3');
+      crash.play();
+      break;
+
+    case "l":
+      let kick = new Audio('sounds/kick-bass.mp3');
+      kick.play();
+      break;
+
+
+    default: console.log(buttonInnerHTML);
+
+        }
+    }
+
+    function buttonAnimation(currentKey) {
+        let activeButton = document.querySelector("." + currentKey);        // concatinate; to input the "class" like this: document.querySelector(".w"); // Output: <button class="w drum">w</button> ; currentKey is the letters on drums (w,a,s,d,j,k,l)
+   
+    activeButton.classList.add("pressed");                                  // to add new "class" using javascript and the design is on style.CSS.file if you want to designed it.
+
+   setTimeout(function() {
+    activeButton.classList.remove("pressed");
+   }, 100);                                                   // 100 milliseconds  --> the duration of highlighting the button if you click/press the button
+   
+    }
+
+////////////////////////////////////////////////////////
+
+/// HIGHER ORDER FUNCTION   ////////////
+
+document.addEventListener ("keydown", respondToKey (event));
+
+function respondToKey (event) {
+    console.log ("Key pressed.");
+}
+//// .addEventListener is the HIGHER ORDER FUNCTION  ; keydown is a INPUT !!!!!!!!!!!!!!
+//// , respondToKey (event) is a Callback Function      !!!!!!!!!!!!!!
+
+//// Sample1###########
+//sample webpage to inspect ("Javascript" text H1)
+$0.addEventListener ("click", function(evt) {           // evt stand for event; its up to you what you name the parameter name
+    console.log (evt);
+});
+/// AFTER you CLICK the TEXT of (Javascript) on the webpage link it will show the events of the text that you click
+// Output : MouseEvent {isTrusted; true, screenX; 286, screenY: 213, clientX: 286, clientY: 116, ..} --> this is a info/events of Javascript text on the wepage
+
+//// Sample2######
+function sayHi (name) {
+    console.log ("Hello", + name);
+}
+/// Calling function / callback funtion
+sayHi ("Tom");
+// Output : Hello, Tom
+
+
+///// Explanation for functions what you input
+
+function anotherEventListener (typeOfEvent, callback) {
+
+    // Detect Event Code....
+
+let eventThatHappened = {
+    eventType: "keypress",      // or // "click"        //it is a just a samples or event types
+    key: "p",                   // which key you "press" or "click" to generate this event.
+    durationOfKeypress: 2       // 2 seconds
+    //explantion for these: when the events happens, namely pressing a key on the keyboard, then this object (eventThatHappened properties/content) gets created based on that event.
+// and now we can pass that object back using a callback method.
+}
+// Calling function
+if (eventThatHappened.eventType === typeOfEvent) {
+callback(eventThatHappened)
+}
+}
+
+anotherAddEventListener ("keypress", function(event) {
+    console.log (event);
+});
+// Output : {eventType: "keypress", key: "p", durationOfKeypress: 2}
+// if the type of event was eqaul to the type that we were looking for which is "keypress", then we trigger the "callback(eventThatHappened)"
+// and the callback can send us that event object which print to console.log and the output is {eventType: "keypress", key: "p", durationOfKeypress: 2}.
+
+// to debug or how to codes work; use this
+debugger;
+anotherAddEventListener ("keypress", function(event) {
+    console.log (event);
+});
+
+
+
 /// CONSTRUCTOR FUNCTION on JS reviewer
 
 function Audio (fileLocation) {
@@ -775,6 +925,8 @@ else {
 // go to Google then Inspect
 // find the $0 then look what inside of the $0 then type $0.innerHTML = "Gogolitos" (rename it what you want)
 
+//// Timeout function() method  link in W3school : https://www.w3schools.com/jsref/met_win_settimeout.asp
+// --> after you click or press the button it will highlights then off again!!!!!!!!!!!!!
 
 
 
@@ -782,8 +934,7 @@ else {
 
 
 
-
-
+/*
  <!-- EVENTS is something that could be happend in web page 
   (samples of events: hover, loading page , clicking button, clicking mouse&keyboard, or CLICK EVENTS)
   most and basic to do it of events in INLINE JAVASCRIPT-->
