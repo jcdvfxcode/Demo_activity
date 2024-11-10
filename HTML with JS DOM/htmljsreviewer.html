@@ -511,7 +511,90 @@ ocument.querySelector("a").getAttribute("href", "https://www.google.com");      
 
 //html rock paper scissor game
 // EXTERNAL JS
-document.querySelector
+let userScore = 0;
+let computerScore = 0;
+
+document.querySelector('#rockBtn').addEventListener('click', () => {
+    selectChoice("rock");
+});
+
+document.querySelector('#paperBtn').addEventListener('click', () => {
+    selectChoice("rock");
+});
+
+document.querySelector('#scissorBtn').addEventListener('click', () => {
+    selectChoice("scissors");
+});
+
+ function selectChoice(choice) {
+    const computerChoice = makeComputerChoice();
+
+    if (choice === computerChoice) {                                    // if DRAW!!!!
+        alert (`You both selected ${choice}. This results in a draw and no points are rewarded.`);
+    }else if (choice === "rock") {
+        if(computerChoice === "paper") {
+            alert((`You selected ${choice} and the computer selected ${computerChoice}. The computer won and scored 1 point.`));
+            computerScore++;
+        }if(computerChoice === "scissors") {
+            alert((`You selected ${choice} and the computer selected ${computerChoice}. You won and scored 1 point.`));
+            userScore++;
+        }
+    }else if (choice === "paper") {
+        if(computerChoice === "scissors") {
+            alert((`You selected ${choice} and the computer selected ${computerChoice}. The computer won and scored 1 point.`));
+            computerScore++;
+        }if(computerChoice === "rock") {
+            alert((`You selected ${choice} and the computer selected ${computerChoice}. You won and scored 1 point.`));
+            userScore++;
+        }
+    }else if (choice === "scissors") {
+        if(computerChoice === "rock") {
+            alert((`You selected ${choice} and the computer selected ${computerChoice}. The computer won and scored 1 point.`));
+            computerScore++;
+        }if(computerChoice === "paper") {
+            alert((`You selected ${choice} and the computer selected ${computerChoice}. You won and scored 1 point.`));
+            userScore++;
+        }
+    }
+    
+        updateScores();             // you write the functions outside the bracket
+
+        if (computerScore === 5 || userScore === 5) {
+            const winnerModal = new bootstrap.Modal(document.getElementById('winnerModal'))    // copied this also and edit, from bts Modal documentation named "via javascript"
+            if (computerScore > userScore) {                       // if computer won, means it will alert "lost" because the WON or Congratulations alerts are already program on HTML not here in JS; this is just a conditions for win and lost
+                    document.querySelector('#gameoverEmoji').innerHTML = "😭";
+                    document.querySelector('#gameoverMessage').innerHTML = "Oops! You have lost the game.";
+            }
+            winnerModal.show();                                                                          // .show(); is from Bts Modal documents also!
+        }
+
+ }
+
+function updateScores () {
+        document.querySelector('#userScore').innerHTML = userScore;
+        document.querySelector('#computerScore').innerHTML = computerScore;
+}
+
+function makeComputerChoice(){
+    const choices = ["rock", "paper", "scissors"];
+    const choice = choices[Math.floor(Math.random() * 3)];
+    // counting number by index (0,1,2); so the random number is until 2 base on index
+    return choice;          // this is a just FORMULA FOR calling function or Callback function but it uses formula for the result its like, Output : choice(2) or choice(1) or choice(0). then it will return or go to or function selectorChoice(choice); sample: function selectorChoice(2)=scissors then conditions of if/else statemens
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////
@@ -522,13 +605,14 @@ document.querySelector
 
 
 
+///// TO TEST THE EXTERNAL JS USING FUNCTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ document.querySelector('#rockBtn').addEventListener('click', test);
 
-
-
-
-
-
-
+ function test () {
+    alert ('Its working!');
+ }
+ 
+ // Output : It will alert the "Its working" if you click the Button(RockBtn image) in webpage !
 
 
 ////////////////////////////////////////////////////////////////////////////
@@ -952,8 +1036,10 @@ else {
 
 
 
-
-
+////////////////////////////
+//// MATH NUMBERS
+<!--  Math.floor(Math.random() * 3) -->
+//   until what number you like (3) --> it means until number 2 only because it is a index??
 
 
 
@@ -984,4 +1070,4 @@ else {
 
     <!-- PROPERTIES describe something about the object(ex.colour,number of seats&doors) and the METHODS are the things that the object can do.(ex. .brake(), .drive() .park() -->
 
-
+    // IF YOU MAKING A FUNCTION IN A CAMEL CASE MAKE SURE THE FIRST WORD IS VERB (makeComputer) !!!!!!!!!!!!!!
