@@ -1,11 +1,7 @@
 // callback function - function passed as an argument
 // anonymous function - function without a function name
 // arrow function - shorter way to write function
-// .then only accept the callback function
 
-fetch("https://jsonplaceholder.typicode.com/todos").then( response => {     //response is depende on you)
-    console.log(response.json());       // input/add .json method to identify what you want to be a json.
-});
 
 document.querySelector("#addTask").addEventListener("click", () => {
 
