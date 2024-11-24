@@ -1,0 +1,109 @@
+
+button {
+    background-color: black;
+    color: aliceblue;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.containerClose {
+    display: inline-flex; /* Make the container an inline flexbox */
+    justify-content: space-between; /* Push items to opposite ends */
+    width: 100%; /* Ensure the container takes full available width */
+}
+
+.btnClose {
+    border-radius: 30px;
+    padding: 5px;
+}
+
+
+.typingText {
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    font-style: normal;
+    }
+
+
+.key {
+    outline: none;
+    border: 10px solid black;
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 8px;
+    text-align: center;
+    margin: 1px;
+   
+}
+
+.keysContainer {
+    text-align: center ;
+    
+}
+
+#spaceKey {
+    width: 220px;
+}
+
+#shiftKey {
+    width: 90px;
+}
+
+#tabKey {
+    width: 60px;
+}
+
+/* test */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 20px;
+}
+
+#letter-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    margin: 0 auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.textGame {
+    color: #333;
+}
+
+#letter-display {
+    font-size: 60px;
+    font-weight: bold;
+    color: #333;
+    margin: 20px;
+}
+
+#user-input {
+    font-size: 24px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    margin-top: 20px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+#user-input:focus {
+    border-color: #4CAF50;
+}
+
+#stats {
+    margin-top: 30px;
+}
+
+button:hover {
+    background-color: gray;
+}

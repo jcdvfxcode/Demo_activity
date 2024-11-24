@@ -212,7 +212,7 @@ deleteButtons.forEach((deleteButton)=>{
 
 document.querySelector("#addTask").addEventListener("click", () => {
 
-if (document.querySelector("#taskInput").value !== ""){
+if (document.querySelector("#taskInput").value !== ""){             // if the box is empty then you can write your text/tasks
     document.querySelector("#taskArea").innerHTML += 
     `<div>                                                                      
             <button class="btn btn-light markButton">✅Clickme!</button>        
@@ -221,13 +221,14 @@ if (document.querySelector("#taskInput").value !== ""){
              <hr>       
      </div>
         `;
-         document.querySelector("#taskInput").value = "";
+         document.querySelector("#taskInput").value = "";              // after you add task then the box will empty again; it will not remain the last you write
+        }else{
     }else{
         alert("Field cannot be empty!");
     }
 
     const markButtons = document.querySelectorAll(".markButton");
-    markButtons.forEach((markButton)=>{
+    markButtons.forEach((markButton)=>{                              // it will get the markButtons 1 by 1 using "forEach" and the (markButton is just a parameter name that you named for every single markButtons).
         markButton.addEventListener("click", (event) => {
             event.target.parentElement.lastELementChild.style = "text-decoration: line-through; font-weight: 900 color: green;";
             event.target.remove();
@@ -237,11 +238,11 @@ if (document.querySelector("#taskInput").value !== ""){
 const deleteButtons = document.querySelectorAll(".deleteButton");
 deleteButtons.forEach((deleteButton)=>{                 
 deleteButton.addEventListener("click", (event) => {            
-    event.target.parentElement.remove();
+    event.target.parentElement.remove();                        // parentElement is the `<div> <button class=..markButton..... to target the whole div(container) to make a command if want to remove whole container of div
     });
 });
 
-    // target Event property
+    // target Event property  (is the function(event) after the "click", (event)
 
 });
 

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Test Game</title>
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+    <div id="game-container">
+        <h1>Typing Test Game</h1>
+        <p id="instructions">Type the letters as they appear on the screen.</p>
+        <div id="letter-display">A</div>
+        <input type="text" id="user-input" autocomplete="off" autofocus>
+        <div id="stats">
+            <p>Time: <span id="time">0</span> seconds</p>
+            <p>Accuracy: <span id="accuracy">0</span>%</p>
+            <p>Progress: <span id="progress">0</span>/26</p>
+        </div>
+        <button id="start-button">Start Game</button>
+    </div>
+
+    <script src="test.js"></script>
+</body>
+</html>

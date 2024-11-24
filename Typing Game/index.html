@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Game</title>
+    <!-- Bootstrap link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- CSS link -->
+     <link rel="stylesheet" href="styles.css">
+    <!-- Fonts link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container px-2 py-5">
+        
+        <h1 class="fw-bold">⌨ Typing Test</h1>
+        <p>Test your typing speed.</p>
+
+        <div class="card shadow">
+            <div class="card-body">
+
+            <div>Corrrect <span class="badge bg-dark" id="userScore">0</span></div>
+            <div>Incorrect: <span class="badge bg-dark" id="computerScore">0</span></div>
+            <hr>
+
+            <div class="container containerClose mb-4">
+              <span class="typingText"><b>Typing Trainer</b></span>
+              <button class="btnClose">Close Lesson</button>
+            </div>
+
+    <div class="containerText mb-3 bg-secondary text-black">
+      <div class="row">
+        <div class="col-3">
+          <p class="p-3">Press the key with the same letter.</p>
+        </div>
+        <div class="col-6">
+          <p class="display-5 text-center"><b>a b c d e f g h i j k l m </b></p>
+          <p  class="display-5 text-center"><b>n o p q r s t u v w x y z</b></p>
+          </div>
+      </div>
+      
+      
+    </div>
+      
+
+    <div class="keysContainer">
+
+            <div class="qwerty">
+                <button class="tab key" id="tabKey">Tab</button>
+                <button class="q key">q</button>
+                <button class="w key">w</button>
+                <button class="e key">e</button>
+                <button class="r key">r</button>
+                <button class="t key">t</button>
+                <button class="y key">y</button>
+                <button class="u key">u</button>
+                <button class="i key">i</button>
+                <button class="o key">o</button>
+                <button class="p key">p</button>
+                <button class="[ key">[</button>
+                <button class="] key">]</button>
+                <button class="\ key">\</button>
+              </div>
+
+              <div class="asd">
+                <button class="capsLock key">CapsLock</button>
+                <button class="a key">a</button>
+                <button class="s key">s</button>
+                <button class="d key">d</button>
+                <button class="f key">f</button>
+                <button class="g key">g</button>
+                <button class="h key">h</button>
+                <button class="j key">j</button>
+                <button class="k key">k</button>
+                <button class="l key">l</button>
+                <button class="; key">;</button>
+                <button class="' key">'</button>
+                <button class="enter key">]</button>
+              </div>
+
+              <div class="zxc">
+                <button class="shift key" id="shiftKey">Shift</button>
+                <button class="z key">z</button>
+                <button class="x key">x</button>
+                <button class="c key">c</button>
+                <button class="v key">v</button>
+                <button class="b key">b</button>
+                <button class="n key">n</button>
+                <button class="m key">m</button>
+                <button class=", key">,</button>
+                <button class=". key">.</button>
+                <button class="/ key">/</button>
+                <button class="shift key" id="shiftKey">Shift</button>
+              </div>
+
+              <div class="controlKeys">
+                <button class="ctrl key rounded-2">Ctrl</button>
+                <button class="win key">Win</button>
+                <button class="alt key">Alt</button>
+                <button class="space key" id="spaceKey">Space</button>
+                <button class="alt key">Alt</button>
+                <button class="cmd key">Cmd</button>
+                <button class="ctrl key">Ctrl</button>
+                <button class="fn key">Fn</button>
+              </div>
+
+    </div>
+
+
+
+
+
+           
+    <!-- Must input the SCRIPT CDN JAVASCRIPT OF BOOTSTRAP5-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
