@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container p-5 my-5 shadow">
+        <h1 class="fw-bold">Add New Student Record</h1>
+        <form action="#" class="mt-4">
+            <label for="firstname">First Name:</label>
+            <input id="firstname" type="text" class="form-control" required>
+            <label for="lastname">Last Name:</label>
+            <input id="lastname" type="text" class="form-control" required>
+            <label for="batch">Batch:</label>
+            <input id="batch" type="number" class="form-control" min="1" required>
+            <label for="grade">Grade:</label>
+            <input id="grade" type="number" class="form-control" min="1" max="100" required>
+            <button type="submit" class="btn btn-dark mt-3">➕ Add Record</button>
+        
+        </form>
+    </div>
+    <div class="container p-5 shadow">
+        <table class="table" id="datatable">
+            <thead>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Batch</th>
+                <th>Grade</th>
+                
+            </thead>
+            <tbody id="tableArea">
+
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- firebase-website just copy the script tag -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+       import { getFirestore, collection, onSnapshot } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js';
+       // manually import the "collection" and "onSnapshot for db=getFirestore(app)"
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyDYIfUXNqwhNP2rgRE5xMw3Q3A-L4FvUKw",
+          authDomain: "studentrecords-e9564.firebaseapp.com",
+          projectId: "studentrecords-e9564",
+          storageBucket: "studentrecords-e9564.firebasestorage.app",
+          messagingSenderId: "849692205965",
+          appId: "1:849692205965:web:0e4aa1288e5fc9664213c4",
+          measurementId: "G-KM7X0WVELB"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Initialize Cloud Firestore and get a reference to the service
+        // (holds the info of the information from the firebase) 
+        const db = getFirestore(app);       // get this in CDN firebase docx
+      
+        onSnapshot(collection(db, "students"), snapshot => {
+            document.querySelector("#tableArea").innerHTML = "";
+            snapshot.forEach(student =>{
+                let studentRow = 
+                `<tr>
+                    <td>${student.data().firstname}</td>
+                    <td>${student.data().lastname}</td>
+                    <td>${student.data().batch}</td>
+                    <td>${student.data().grade}</td>
+                </tr>`;
+                document.querySelector("#tableArea").innerHTML += studentRow;
+            })
+        });
+        //need to @import "onSnapshot" above at the import area and also add the "collection"
+      
+      
+      </script>
+</body>
+</html>
+
+
+
+<!-- onSnapshot is a snapshot or a copy of the record from the database and it will update from the frontend, if there's a new update or change from the database -->
+ <!-- must 2 parameters; 1ST PARAMETER -  it accepts a collection or an array or an object from the data/info from the firebase(name John Doe)
+ then input the collection function and "which" database and what collection name (ex. onSnapshot(collection(db, "students"), )
+ 2ND PARAMETER - what will do on that "got collection"
+ if there's happened it will triggered this callback function 
+ snapshot => {              (snapshot is the data from the firebase (name: John Doe etc.))
+            snapshot.forEach(student =>{
+                console.log(student.data())     // console.log if for optional to check in inspect if its working
+            })
+                -->
