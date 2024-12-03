@@ -41,8 +41,9 @@
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-        import { getFirestore, collection, onSnapshot, addDoc } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js';
+        import { getFirestore, collection, onSnapshot, addDoc, orderBy, query } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js';
        // manually import the "collection" and "onSnapshot for db=getFirestore(app)"
+       // addDoc, orderBy & query are manually import from the firebase docs; https://firebase.google.com/docs/firestore/query-data/order-limit-data
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
       
@@ -65,7 +66,7 @@
         // (holds the info of the information from the firebase) 
         const db = getFirestore(app);       // get this in CDN firebase docx
       
-        onSnapshot(collection(db, "students"), snapshot => {
+        onSnapshot(query(collection(db, "students"), orderBy("lastname", "asc")), snapshot => {     // "asc means ascending"
             document.querySelector("#tableArea").innerHTML = "";
             snapshot.forEach(student =>{
                 let studentRow = 
