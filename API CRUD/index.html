@@ -22,7 +22,7 @@
         
     </div>
     <div class="container p-5 shadow">
-        <div class="h1 fw-bold">Students</div>
+        <h1 class="fw-bold">Students</h1>
         <table class="table" id="datatable">
             <thead>
                 <th>First Name</th>
@@ -66,7 +66,7 @@
         // (holds the info of the information from the firebase) 
         const db = getFirestore(app);       // get this in CDN firebase docx
       
-        onSnapshot(query(collection(db, "students"), orderBy("lastname", "asc")), snapshot => {     // "asc means ascending"
+        onSnapshot(query(collection(db, "students"), orderBy("lastname", "asc")), snapshot => {     // "asc means ascending" / or "desc if opposite order"
             document.querySelector("#tableArea").innerHTML = "";
             snapshot.forEach(student =>{
                 let studentRow = 

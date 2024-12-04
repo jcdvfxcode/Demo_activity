@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BASE404 Group Chat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    
+    <main class="container p-5 mt-5 shadow">
+        <h1 class="fw-bold mb-3">💬BASE404 Group Chat</h1>
+        <label for="user_name">Name:</label>
+        <input type="text" id="user_name" class="form-control" placeholder="Enter your name here...">
+       
+
+        <!-- Chat section -->
+         <section>
+            <div class="card mt-4" style="overflow-y: scroll; height: 580px;">
+                <!--<style="overflow-y: scroll; height: 580px;"> CSS applied for scrolling the conversation on the chatbox -->
+                <div class="card-body" id="message_area">
+                   
+                </div>
+            </div>
+         </section>
+
+         <!-- Message section -->
+         <textarea placeholder="Write your message here.." id="message_content" class=" mt-3 form-control"></textarea>
+         <button id="send_button" class="btn btn-primary mt-3">Send</button>
+    </main>
+    
+    <!-- firebase-website just copy the script tag -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getFirestore, collection, onSnapshot, addDoc, orderBy, query, Timestamp } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js';
+       // manually import the "collection" and "onSnapshot for db=getFirestore(app)"
+       // addDoc, orderBy & query are manually import from the firebase docs; https://firebase.google.com/docs/firestore/query-data/order-limit-data
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+    apiKey: "AIzaSyDRUO3UYc-FzZfWrBHXLs25bc2Y3d-Apu4",
+    authDomain: "groupchat-f8fed.firebaseapp.com",
+    projectId: "groupchat-f8fed",
+    storageBucket: "groupchat-f8fed.firebasestorage.app",
+    messagingSenderId: "630217818883",
+    appId: "1:630217818883:web:9ab0a4f013ab75e4fadf36"
+  };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Initialize Cloud Firestore and get a reference to the service
+        // (holds the info of the information from the firebase) 
+        const db = getFirestore(app);       // get this in CDN firebase docx
+
+
+
+
+    // Send new message
+    document.querySelector("#send_button").addEventListener("click", () => {
+        if(document.querySelector("#user_name").value !== "" && document.querySelector("#message_content").value !== ""){
+            addDoc(collection(db, "messages"), {      // allow us to create a new record there by typing on the field/box area/name area to the liveserver/showpreview/page and to show or save the data to the cloud firestore
+                    sender: document.querySelector("#user_name").value,
+                    message: document.querySelector("#message_content").value,
+                    timestamp: Timestamp.fromDate(new Date())
+            });  
+            document.querySelector("#message_content").value = "";      // to remove the text/value after send ; it will empty the message area again
+        }else {
+            alert("Some fields are empty!");
+        }
+   
+        });
+      
+        onSnapshot(query(collection(db, "messages"), orderBy("timestamp", "asc")), snapshot => {   //timestamp is what you input on the field on the cloud firestore data
+            document.querySelector("#message_area").innerHTML = "";
+            snapshot.forEach(message =>{            // "snapshot" object is will get every document in our messages in the collection on the firestore
+            
+                if(message.data().sender === document.querySelector("#user_name").value) {
+                    document.querySelector("#message_area").innerHTML +=
+                `
+                <div class="row mb-2">
+                            <div class="col-md-6 offset-md-6">
+                                <div class="alert bg-light mb-0">
+                                    <small class="fw-bold">${message.data().sender}</small>
+                                    <br>
+                                    <span>${message.data().message}</span>
+                                </div>
+                                <small class="text-secondary">${message.data().timestamp.toDate().toLocaleTimeString('en-US')}</small>
+                            </div>
+                        </div>
+                    
+                `;
+
+                }else{
+                    document.querySelector("#message_area").innerHTML +=
+                `
+                <div class="row mb-2">
+                            <div class="col-md-6">
+                                <div class="alert bg-primary text-white mb-0">
+                                    <small class="fw-bold">${message.data().sender}</small>
+                                    <br>
+                                    <span>${message.data().message}</span>
+                                </div>
+                                <small class="text-secondary float-end">${message.data().timestamp.toDate().toLocaleTimeString('en-US')}</small>
+                            </div>
+                        </div>
+                    
+                `;
+                }
+
+            
+        
+            });
+            document.querySelector("#message_area").scrollIntoView(false);      // formula to make the first loading/view for the latest chat
+        });
+
+
+
+      </script>
+</body>
+</html>
+
+
+
+<!-- onSnapshot is a snapshot or a copy of the record from the database and it will update from the frontend, if there's a new update or change from the database -->
+ <!-- onSnapshot whatever is the value here in HTML will reflect in real time -->
+<!-- asc and desc is for opposite order (latest to oldest) -->
+
+<!-- must 2 parameters; 1ST PARAMETER -  it accepts a collection or an array or an object from the data/info from the firebase(name John Doe)
+ then input the collection function and "which" database and what collection name (ex. onSnapshot(collection(db, "students"), )
+ 2ND PARAMETER - what will do on that "got collection"
+ if there's happened it will triggered this callback function 
+ snapshot => {              (snapshot is the data from the firebase (name: John Doe etc.))
+            snapshot.forEach(student =>{
+                console.log(student.data())     // console.log if for optional to check in inspect if its working
+            })
+                -->
+<!-- orderBy is for arrangement by alphabetic or to order -->
