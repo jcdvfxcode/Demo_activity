@@ -64,7 +64,7 @@
 
         // Initialize Cloud Firestore and get a reference to the service
         // (holds the info of the information from the firebase) 
-        const db = getFirestore(app);       // get this in CDN firebase docx
+        const db = getFirestore(app);       // get this in CDN firebase docx // db means database   ; we will place all data from firestore here in db it is connected in real-time
       
         onSnapshot(query(collection(db, "students"), orderBy("lastname", "asc")), snapshot => {     // "asc means ascending" / or "desc if opposite order"
             document.querySelector("#tableArea").innerHTML = "";
@@ -111,7 +111,7 @@
 
 
 <!-- onSnapshot is a snapshot or a copy of the record from the database and it will update from the frontend, if there's a new update or change from the database -->
- <!-- must 2 parameters; 1ST PARAMETER -  it accepts a collection or an array or an object from the data/info from the firebase(name John Doe)
+ <!-- onSnapshot -must 2 parameters; 1ST PARAMETER -  it accepts a collection or an array or an object from the data/info from the firestore(name John Doe)
  then input the collection function and "which" database and what collection name (ex. onSnapshot(collection(db, "students"), )
  2ND PARAMETER - what will do on that "got collection"
  if there's happened it will triggered this callback function 
@@ -121,3 +121,5 @@
             })
                 -->
 <!-- orderBy is for arrangement by alphabetic or to order -->
+ <!-- .map is like .forEach but ADVANCE (for every record or element in that array or collection it will perform a function into doc.data() or (.data())) -->
+  <!-- .data() is a function that get the data of the firetore name like students(when you start to create a filename data from the collection) then what the field that you input on that document collection in cloud firestore-->

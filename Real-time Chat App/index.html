@@ -77,15 +77,15 @@
       
         onSnapshot(query(collection(db, "messages"), orderBy("timestamp", "asc")), snapshot => {   //timestamp is what you input on the field on the cloud firestore data
             document.querySelector("#message_area").innerHTML = "";
-            snapshot.forEach(message =>{            // "snapshot" object is will get every document in our messages in the collection on the firestore
+            snapshot.forEach(message =>{            // "snapshot" object is (just a temporary variable?notsure) will get every document in our messages in the collection on the firestore using .forEach
             
-                if(message.data().sender === document.querySelector("#user_name").value) {
+                if(message.data().sender === document.querySelector("#user_name").value) {      // if they match then we should put the message to the right side if they dont then to the left side
                     document.querySelector("#message_area").innerHTML +=
                 `
                 <div class="row mb-2">
                             <div class="col-md-6 offset-md-6">
                                 <div class="alert bg-light mb-0">
-                                    <small class="fw-bold">${message.data().sender}</small>
+                                    <small class="fw-bold">${message.data().sender}</small>    
                                     <br>
                                     <span>${message.data().message}</span>
                                 </div>
@@ -94,7 +94,7 @@
                         </div>
                     
                 `;
-
+                                // .sender and .message is from firestore collection documents name
                 }else{
                     document.querySelector("#message_area").innerHTML +=
                 `
