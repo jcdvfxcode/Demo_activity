@@ -50,8 +50,9 @@ userInput.addEventListener('input', function() {
         correctTyped++;
         totalTyped++;
         currentLetterIndex++;
-
+        
         if (currentLetterIndex < letters.length) {
+            
             updateLetterDisplay();
         }
         // Reset the input field
@@ -77,5 +78,30 @@ function updateStats() {
     progressDisplay.textContent = progress;
 }
 
+
+function onscreenkb(letter){
+    if (!gameActive) return;
+
+
+    const typedLetter = letter.toLowerCase();
+    const currentLetter = letters[currentLetterIndex];
+
+    if (typedLetter === currentLetter) {
+
+        correctTyped++;
+        totalTyped++;
+        currentLetterIndex++;
+        
+        if (currentLetterIndex < letters.length) {
+            updateLetterDisplay();
+        }
+        // Reset the input field
+        userInput.value = '';
+    } else {
+        totalTyped++;
+    }
+
+    updateStats();
+}
 
 
